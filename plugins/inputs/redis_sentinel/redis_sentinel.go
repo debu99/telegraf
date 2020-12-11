@@ -239,7 +239,7 @@ func (r *RedisSentinel) Gather(acc telegraf.Accumulator) error {
 				// ------------------------------------------------------------
 
 				// Check other Replicas
-				replicasCmd := redis.NewSliceCmd("sentinel", "replicas", m["name"])
+				replicasCmd := redis.NewSliceCmd("sentinel", "slaves", m["name"])
 				if srErr := client.sentinel.Process(replicasCmd); srErr != nil {
 					acc.AddError(srErr)
 					return
